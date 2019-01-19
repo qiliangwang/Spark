@@ -12,13 +12,15 @@ object SQLContextApp {
 
   def main(args: Array[String]) {
 
-    val path = args(0)
+//    val path = args(0)
+
+    val path = "/home/vaderwang/software/spark-2.3.0/examples/src/main/resources/people.json"
 
     //1)创建相应的Context
     val sparkConf = new SparkConf()
 
     //在测试或者生产中，AppName和Master我们是通过脚本进行指定
-    //sparkConf.setAppName("SQLContextApp").setMaster("local[2]")
+    sparkConf.setAppName("SQLContextApp").setMaster("local[2]")
 
     val sc = new SparkContext(sparkConf)
     val sqlContext = new SQLContext(sc)
