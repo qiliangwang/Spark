@@ -5,7 +5,7 @@ import org.apache.spark.sql.SQLContext
 
 import org.apache.spark.SparkConf
 
-object SQLContext {
+object App {
 
   def main(args: Array[String]): Unit = {
     val path = "test.json"
@@ -23,8 +23,6 @@ object SQLContext {
     val people = sqlContext.read.format("json").load(path)
     people.printSchema()
     people.show()
-
-
 
     //3)关闭资源
     sc.stop()
