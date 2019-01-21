@@ -14,7 +14,7 @@ object DatasetApp {
     //注意：需要导入隐式转换
     import spark.implicits._
 
-    val path = "file:///Users/rocky/data/sales.csv"
+    val path = "data/sales.csv"
 
     //spark如何解析csv文件？
     val df = spark.read.option("header","true").option("inferSchema","true").csv(path)
@@ -22,12 +22,6 @@ object DatasetApp {
 
     val ds = df.as[Sales]
     ds.map(line => line.itemId).show
-
-
-    spark.sql("seletc name from person").show
-
-    //df.seletc("name")
-    df.select("nname")
 
     ds.map(line => line.itemId)
 

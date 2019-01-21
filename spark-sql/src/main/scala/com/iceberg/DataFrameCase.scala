@@ -11,7 +11,7 @@ object DataFrameCase {
     val spark = SparkSession.builder().appName("DataFrameRDDApp").master("local[2]").getOrCreate()
 
     // RDD ==> DataFrame
-    val rdd = spark.sparkContext.textFile("file:///Users/rocky/data/student.data")
+    val rdd = spark.sparkContext.textFile("data/student.data")
 
     //注意：需要导入隐式转换
     import spark.implicits._

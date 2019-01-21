@@ -21,7 +21,7 @@ object DataFrameRDDApp {
 
   def program(spark: SparkSession): Unit = {
     // RDD ==> DataFrame
-    val rdd = spark.sparkContext.textFile("file:///Users/rocky/data/infos.txt")
+    val rdd = spark.sparkContext.textFile("data/infos.txt")
 
     val infoRDD = rdd.map(_.split(",")).map(line => Row(line(0).toInt, line(1), line(2).toInt))
 

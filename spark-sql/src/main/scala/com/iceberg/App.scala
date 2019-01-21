@@ -8,13 +8,13 @@ import org.apache.spark.SparkConf
 object App {
 
   def main(args: Array[String]): Unit = {
-    val path = "test.json"
+    val path = "data/test.json"
 
     //1)创建相应的Context
     val sparkConf = new SparkConf()
 
     //在测试或者生产中，AppName和Master我们是通过脚本进行指定
-    sparkConf.setAppName("SQLContextApp").setMaster("spark://localhost:7077")
+    sparkConf.setAppName("SQLContextApp").setMaster("local[2]")
 
     val sc = new SparkContext(sparkConf)
     val sqlContext = new SQLContext(sc)
