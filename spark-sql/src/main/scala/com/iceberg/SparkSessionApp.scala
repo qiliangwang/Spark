@@ -12,7 +12,11 @@ object SparkSessionApp {
     val spark = SparkSession.builder().appName("SparkSessionApp")
       .master("local[2]").getOrCreate()
 
-    val people = spark.read.json("file:///home/vaderwang/software/spark-2.3.0/examples/src/main/resources/people.json")
+    val absolutePath = "file:///home/vaderwang/software/spark-2.3.0/examples/src/main/resources/people.json"
+
+    val relativePath = "data/people.json"
+
+    val people = spark.read.json(relativePath)
 
     people.show()
 

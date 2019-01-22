@@ -14,7 +14,7 @@ object SQLContextApp {
 
 //    val path = args(0)
 
-    val path = "/home/vaderwang/software/spark-2.3.0/examples/src/main/resources/people.json"
+    val path = "data/people.json"
 
     //1)创建相应的Context
     val sparkConf = new SparkConf()
