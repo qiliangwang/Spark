@@ -1,4 +1,4 @@
-package com.imooc.log
+package com.iceberg.log
 
 import java.util.{Date, Locale}
 

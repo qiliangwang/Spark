@@ -1,6 +1,4 @@
-package com.imooc.log
-
-import com.ggstar.util.ip.IpHelper
+package com.iceberg.log
 
 /**
  * IP解析工具类

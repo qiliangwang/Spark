@@ -1,4 +1,4 @@
-package com.imooc.log
+package com.iceberg.log
 
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types.{LongType, StringType, StructField, StructType}

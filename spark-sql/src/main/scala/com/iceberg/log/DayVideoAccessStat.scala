@@ -1,4 +1,4 @@
-package com.imooc.log
+package com.iceberg.log
 
 /**
  * 每天课程访问次数实体类

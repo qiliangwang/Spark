@@ -1,6 +1,6 @@
-package com.imooc.log
+package com.iceberg.log
 
-import java.sql.{PreparedStatement, Connection}
+import java.sql.{Connection, PreparedStatement}
 
 import scala.collection.mutable.ListBuffer
 

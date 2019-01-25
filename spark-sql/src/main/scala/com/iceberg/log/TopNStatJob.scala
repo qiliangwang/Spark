@@ -1,4 +1,4 @@
-package com.imooc.log
+package com.iceberg.log
 
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._

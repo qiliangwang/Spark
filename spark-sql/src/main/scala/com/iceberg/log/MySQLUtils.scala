@@ -1,6 +1,6 @@
-package com.imooc.log
+package com.iceberg.log
 
-import java.sql.{Connection, PreparedStatement, DriverManager}
+import java.sql.{Connection, DriverManager, PreparedStatement}
 
 /**
  * MySQL操作工具类
