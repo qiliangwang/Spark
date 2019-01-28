@@ -1,5 +1,7 @@
 package com.iceberg.log
 
+import com.ggstar.util.ip.IpHelper
+
 /**
  * IP解析工具类
  */

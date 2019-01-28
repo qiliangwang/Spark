@@ -1,5 +1,7 @@
 package com.iceberg.spark
 
+import org.apache.spark.sql.SparkSession
+
 /**
  * DataFrame API基本操作
  */

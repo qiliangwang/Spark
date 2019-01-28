@@ -9,12 +9,16 @@ object SparkStatFormatJob {
 
   def main(args: Array[String]) {
 
+    val filePath = "file:///home/vaderwang/Videos/SparkSQL/data/access.20161111.log"
+
+    val outPath = "file:///home/vaderwang/Videos/SparkSQL/data/output"
+
     val spark = SparkSession.builder().appName("SparkStatFormatJob")
       .master("local[2]").getOrCreate()
 
-    val acccess = spark.sparkContext.textFile("file:///Users/rocky/data/imooc/10000_access.log")
+    val acccess = spark.sparkContext.textFile(filePath)
 
-    //acccess.take(10).foreach(println)
+    acccess.take(10).foreach(println)
 
     acccess.map(line => {
       val splits = line.split(" ")
@@ -29,7 +33,7 @@ object SparkStatFormatJob {
       val traffic = splits(9)
 //      (ip, DateUtils.parse(time), url, traffic)
       DateUtils.parse(time) + "\t" + url + "\t" + traffic + "\t" + ip
-    }).saveAsTextFile("file:///Users/rocky/data/imooc/output/")
+    }).saveAsTextFile(outPath)
 
     spark.stop()
   }

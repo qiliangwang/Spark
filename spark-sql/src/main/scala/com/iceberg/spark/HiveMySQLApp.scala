@@ -1,5 +1,7 @@
 package com.iceberg.spark
 
+import org.apache.spark.sql.SparkSession
+
 /**
  * 使用外部数据源综合查询Hive和MySQL的表数据
  */
