@@ -1,5 +1,8 @@
 package com.iceberg.spark
 
+import org.apache.spark.sql.SQLContext
+import org.apache.spark.{SparkConf, SparkContext}
+
 /**
  * SQLContext的使用:
  * 注意：IDEA是在本地，而测试数据是在服务器上 ，能不能在本地进行开发测试的？
