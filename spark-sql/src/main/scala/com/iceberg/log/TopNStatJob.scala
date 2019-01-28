@@ -12,28 +12,30 @@ import scala.collection.mutable.ListBuffer
 object TopNStatJob {
 
   def main(args: Array[String]) {
+
     val spark = SparkSession.builder().appName("TopNStatJob")
       .config("spark.sql.sources.partitionColumnTypeInference.enabled","false")
       .master("local[2]").getOrCreate()
 
+    val dataPath = "/home/vaderwang/Videos/SparkSQL/data/clean"
 
-    val accessDF = spark.read.format("parquet").load("/Users/rocky/data/imooc/clean")
+    val accessDF = spark.read.format("parquet").load(dataPath)
 
-//    accessDF.printSchema()
-//    accessDF.show(false)
+    accessDF.printSchema()
+    accessDF.show(false)
 
     val day = "20170511"
 
-    StatDAO.deleteData(day)
+//    StatDAO.deleteData(day)
 
     //最受欢迎的TopN课程
-    videoAccessTopNStat(spark, accessDF, day)
+//    videoAccessTopNStat(spark, accessDF, day)
 
     //按照地市进行统计TopN课程
     cityAccessTopNStat(spark, accessDF, day)
 
     //按照流量进行统计
-    videoTrafficsTopNStat(spark, accessDF, day)
+//    videoTrafficsTopNStat(spark, accessDF, day)
 
     spark.stop()
   }
@@ -63,7 +65,7 @@ object TopNStatJob {
           list.append(DayVideoTrafficsStat(day, cmsId,traffics))
         })
 
-        StatDAO.insertDayVideoTrafficsAccessTopN(list)
+//        StatDAO.insertDayVideoTrafficsAccessTopN(list)
       })
     } catch {
       case e:Exception => e.printStackTrace()
@@ -81,7 +83,7 @@ object TopNStatJob {
     .groupBy("day","city","cmsId")
     .agg(count("cmsId").as("times"))
 
-    //cityAccessTopNDF.show(false)
+    cityAccessTopNDF.show(false)
 
     //Window函数在Spark SQL的使用
 
@@ -95,7 +97,7 @@ object TopNStatJob {
       ).as("times_rank")
     ).filter("times_rank <=3") //.show(false)  //Top3
 
-
+    top3DF.show(false)
     /**
      * 将统计结果写入到MySQL中
      */
@@ -112,7 +114,7 @@ object TopNStatJob {
           list.append(DayCityVideoAccessStat(day, cmsId, city, times, timesRank))
         })
 
-        StatDAO.insertDayCityVideoAccessTopN(list)
+//        StatDAO.insertDayCityVideoAccessTopN(list)
       })
     } catch {
       case e:Exception => e.printStackTrace()
@@ -165,7 +167,7 @@ object TopNStatJob {
           list.append(DayVideoAccessStat(day, cmsId, times))
         })
 
-        StatDAO.insertDayVideoAccessTopN(list)
+//        StatDAO.insertDayVideoAccessTopN(list)
       })
     } catch {
       case e:Exception => e.printStackTrace()
